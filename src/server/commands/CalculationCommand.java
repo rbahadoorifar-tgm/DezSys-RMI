@@ -1,6 +1,8 @@
 package server.commands;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
+
 import calculation.Calculation;
 import callback.Callback;
 
@@ -22,6 +24,10 @@ public class CalculationCommand implements Command, Serializable {
     public void execute() {
         System.out.println("CalculationCommand called!");
         calculation.calculate();
-        calculation.getResult();
+        try {
+            callback.execute(calculation.getResult());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

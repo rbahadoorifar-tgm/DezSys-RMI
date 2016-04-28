@@ -8,5 +8,5 @@ import java.rmi.RemoteException;
  */
 public interface Callback<T> extends Remote {
 
-    public void execute(T command);
+    public void execute(T command) throws RemoteException;
 }

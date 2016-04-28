@@ -30,6 +30,6 @@ public class EulerCalculation implements Calculation, Serializable {
 
     @Override
     public BigDecimal getResult() {
-        return null;
+        return euler;
     }
 }

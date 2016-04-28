@@ -27,12 +27,14 @@ public class Client {
             int wishedNumber = Integer.parseInt(args[1]);
 
             Calculation calculation = new EulerCalculation(wishedNumber);
-            Callback callback = (Callback) UnicastRemoteObject.exportObject(new CalculationCallback(), 0);
-            Command command = new CalculationCommand(calculation, callback);
-
+            Callback callback = new CalculationCallback();
+            Callback callbackUnicast = (Callback) UnicastRemoteObject.exportObject(callback, 0);
+            Command command = new CalculationCommand(calculation, callbackUnicast);
 
             uRemoteObject.doSomething(command);
-            uRemoteObject.doSomething(command);
+
+            while ( System.in.read() != '\n' );
+                UnicastRemoteObject.unexportObject(callback, true);
 
         } catch (RemoteException re) {
             System.err.println("Service not found?" + " Check your RMI-Registry!");
