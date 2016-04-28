@@ -33,9 +33,7 @@ public class Client {
 
             uRemoteObject.doSomething(command);
 
-            while ( System.in.read() != '\n' );
-                UnicastRemoteObject.unexportObject(callback, true);
-
+            System.exit(1);
         } catch (RemoteException re) {
             System.err.println("Service not found?" + " Check your RMI-Registry!");
             System.exit(1);
