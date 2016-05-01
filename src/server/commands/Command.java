@@ -1,12 +1,8 @@
 package server.commands;
-
 import java.io.Serializable;
 
 /**
- * Command interface
- *
- * @author Michael Borko
- * @version unknown
+ * Command Interface, welcher von allen Command-Klassen implementiert wird.
  */
 public interface Command extends Serializable {
 

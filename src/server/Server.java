@@ -18,9 +18,12 @@ public class Server {
             System.setSecurityManager(new SecurityManager());
         }
         try {
+            //ServerService erstellen
             ServerService uRemoteObject = new ServerService();
+            //Diesen dann exportieren
             DoSomethingService stub = (DoSomethingService) UnicastRemoteObject.exportObject(uRemoteObject, 0);
-            Registry registry = LocateRegistry.createRegistry(1234);
+            //Registry am Standard Port erstellen, sodass zum Verbinden nur noch eine IP-Adresse benötigt wird.
+            Registry registry = LocateRegistry.createRegistry(1099);
             registry.rebind("Service", stub);
             System.out.println("Service bound! Press Enter to terminate ...");
 

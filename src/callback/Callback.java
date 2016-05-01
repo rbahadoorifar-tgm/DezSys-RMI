@@ -4,7 +4,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- * Created by Ramin on 28.04.2016.
+ * Callback Interface, der von allen Callback Klassen implementiert wird.
+ *
+ * @param <T> Datentyp, welcher verarbeitet werden soll.
  */
 public interface Callback<T> extends Remote {
 
